@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var arr = [11,22,22,55,66,11,88,66,77,66]
+
+    //查找66的位置
+
+    //封装成函数形式
+    // function getPos(arr,x){
+    //     var pos = []  //保存元素的位置
+    //     arr.forEach(function(v,k){
+    //     if(v==x){
+    //         console.log("位置",k);
+    //         pos.push(k)
+    //     }
+    // })
+    // return pos
+    // }
+
+    // console.log(getPos(arr,66));
+
+
+
+    var pos = []  //保存元素的位置
+    arr.forEach(function(v,k){
+        if(v==66){
+            console.log("位置",k);
+            pos.push(k)
+        }
+    })
+    console.log(pos);
+
+
+    //求和
+    var total = 0
+    arr.forEach(function(v){
+        total += v  //total = total + v
+    })
+    console.log(total);
+</script>
