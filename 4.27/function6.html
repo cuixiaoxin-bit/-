@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    //所有对象的原型 最终都是Object
+
+    //第一级
+    function Person(){
+
+    }
+    Person.prototype.name = "noname"    //添加属性name
+    console.log(Person.prototype);
+    var p1 = new Person
+
+
+    //第二级
+    function Chinese(){
+
+    }
+    Chinese.prototype = new Person()
+    Chinese.prototype.color = "yellow"  //添加属性color
+
+    var p2 = new Person()   //继承第一级
+    console.log(p2);
+    console.log(p2.name);
+
+    //第三级
+    function human(){
+
+    }
+    human.prototype = new Chinese
+    var p3 = new Chinese    //继承第二级
+    console.log(p3);
+    console.log(p3.color);
+    console.log(p3.name);
+</script>
