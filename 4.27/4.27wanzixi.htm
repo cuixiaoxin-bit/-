@@ -1,0 +1,89 @@
+<script>
+    //1
+    console.log(Object.prototype.__proto__);  //null
+
+    //2
+    function Fn(){
+
+    }
+    console.log(Fn.prototype);  //object
+
+    //3
+    // if(!("a" in window)){
+    //     var a = 12
+    // }
+    // console.log(a);         //undefind'
+
+    //4
+    function a (){
+        var i =0
+        function b(){
+            i++
+            console.log(i);
+        }
+        return b
+    }
+    var c = a()
+    c()
+    c()
+    c()                     //1,2,3
+
+    //5
+    var animal = "dog"
+    function sayAnimal(){
+        animal = "cat"
+        function animal(){}
+            console.log(animal.toString());
+        
+    }
+    sayAnimal()             //cat
+
+    //6
+    function Person(){
+        this.age = 20
+    }
+    Person.prototype.age = 30
+    Person.prototype.getAge = function(){
+        return this.age
+    }
+    var p = new Person()
+    console.log(p.getAge());     //20
+
+    //7
+    //声明定义一个函数Fn.prototype.contructor指向什么?  Fn
+
+    //8
+    var name = "cat"
+    var obj = {
+        name : "dog",
+        getName:function(){
+            this.name = "mouse";
+            return (function(){
+                return this.name;
+            })();
+        }
+    }
+    console.log(obj.getName);
+
+    //9
+    var add = (function(){
+        return function(){
+            var counter = 0
+            return(counter+=1)
+        }
+    })()
+
+    add()
+    add()
+    console.log(add());             //输出1
+
+    //10
+    console.log(a);
+    a = "hello"
+    function fn(){
+        console.log(a);
+        a = 12
+    }
+    fn()
+    console.log(a);     //输出12
+</script>
