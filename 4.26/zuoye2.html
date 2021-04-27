@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1">这是ID</h1>
+    <h1 class="h2">这是类</h1>
+    <h1>这是标签</h1>
+</body>
+<script>
+    function $(param){
+        var obj = null
+        if(param.substr(0,1) == "#"){
+            obj = document.querySelector(param)
+        }else if(param.substr(0,1) == "."){
+            obj = document.querySelectorAll(param)
+        }else {
+            obj = document.querySelectorAll(param)
+        }
+        return obj
+    }
+    console.log($("#h1"));
+    console.log($(".h2"));
+    console.log($("h1"));
+</script>
+</html>

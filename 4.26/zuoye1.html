@@ -1,0 +1,34 @@
+<script>
+    var arr = [11,22,22,55,66,11,88,66,77,66]
+    arr.forEach(function(v,k){
+        if(v==66){
+            console.log(k,v);
+        }    
+    })  //获取66的位置
+
+    function add(Arr){
+        var sum = 0
+        for(var i=0;i<arr.length;i++){
+            sum+=arr[i]
+        }
+        return sum
+    }
+    var sum = add(arr)
+    console.log(sum);   //获取所有数的和
+
+    var newArr = []
+    //forEach()遍历数组
+			//方法里面调用回调函数//找到回调函数
+			
+			//将数组中的0去掉
+			arr.forEach(function(item,index,array){
+				if(item==22){
+					//当等于22的时候，我们不是要退出循环，而是退出这个函数
+					return;
+				}
+				newArr.push(item);
+			})
+			console.log(newArr);
+
+
+</script>

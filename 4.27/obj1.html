@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    //简单数据类型会复制进函数
+    var a = "LeBron"
+
+    function change(str){
+        str = "..."+str
+    }
+
+    console.log(a);
+    change(a)
+    console.log(a);
+
+
+    //复杂数据类型不能复制
+    var b = {
+        name:"Wade"
+    }
+
+    function change2(obj){
+        obj.username = "NICE"
+    }
+
+    console.log(b);
+    change2(b)
+    console.log(b);
+</script>
