@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>A</button>
+    <button>B</button>
+    <button>C</button>
+    <button>D</button>
+    <button>E</button>
+</body>
+
+</html>
+<script>
+    var btn = document.querySelectorAll("button")
+    console.log(btn);
+    // function acti(ind) {
+    //     btn[ind].onclick = function () { // 该匿名函数中 无参数！
+    //        alert(ind); // 点哪个弹出哪个
+    //     };
+    // }
+    // for (var i = 0; i < btn.length; i++) {
+    //     acti(i);
+    // }
+
+
+    var index = 0
+    for(var i =0;i<btn.length;i++){
+    btn[i].index = i
+        btn[i].onclick = function(){
+            alert(this.index)
+        }
+    }
+</script>

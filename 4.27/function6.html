@@ -18,7 +18,7 @@
     function Person(){
 
     }
-    Person.prototype.name = "noname"    //添加属性name
+    Person.prototype.name = "noname"    //原型添加属性name
     console.log(Person.prototype);
     var p1 = new Person
 
@@ -28,7 +28,7 @@
 
     }
     Chinese.prototype = new Person()
-    Chinese.prototype.color = "yellow"  //添加属性color
+    Chinese.prototype.color = "yellow"  //原型添加属性color
 
     var p2 = new Person()   //继承第一级
     console.log(p2);
