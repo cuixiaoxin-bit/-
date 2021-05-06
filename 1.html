@@ -1,12 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>54vvvv4444000</h1>
 </body>
+
 </html>
+<script>
+
+    //1
+    var b;
+    function fun() {
+        b = "change";
+    }
+    console.log(b);
+    fun();
+    console.log(b);
+
+    //5
+    function Foo() {
+        console.log(a);
+        var a = "hello";
+        console.log(a);
+    };
+    Foo();
+
+    //7
+    var num = 1;
+    function f() {
+        var num = 2;
+        return num;
+    }
+    console.log(f());
+
+    //13
+    function f1() {
+        console.log(this);
+    }
+    f1()
+
+    //21
+    var fun = function () {
+        console.log(1);
+    }
+
+    function fun() {
+        console.log(2);
+    }
+    fun();
+
+    //22
+    function test() {
+        b();
+        var a = 1;
+        function b() {
+            console.log(1);
+            console.log(a);
+            var a = 2;
+        }
+    }
+    test();
+
+    //24
+    sayHi();
+    var sayHi = function () {
+        console.log("Hi");
+    }
+
+    //29
+    function func(n, o) {
+        console.log(o)
+        return {
+            func: function (m) {
+                return func(m, n);
+            }
+        };
+    }
+    var a = func(0); a.func(1); a.func(2); a.func(3);
+</script>
