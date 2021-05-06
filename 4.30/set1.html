@@ -1,12 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
 <script>
-    const s =new Set()
+    const s = new Set()
     s.add(11)
     s.add(22)
     console.log(s);
 
 
-    const arr = [11,22,33,44]
+    const arr = [11, 22, 33, 44]
     const s1 = new Set(arr)
     console.log(s1);
+
+
+
+
+
+
     
+    let obj1 = {
+        name: "zhangsan",
+        age: 11,
+        get name() {
+            console.log("正在读取name属性")
+        },
+        set name(v) {
+            console.log("新值为: ", v)
+        }
+    }
+
+    obj1.name        // 访问name属性 触发 get方法
+    obj1.name = "lisi"    // 修改 name属性 触发 set方法
+
 </script>
