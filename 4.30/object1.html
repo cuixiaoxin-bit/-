@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+    let obj = {
+        name: "name",
+        age: "15"
+    }
+
+    let obj1 = obj
+    obj.name = "xxx"
+    console.log(obj1.name);
+
+    let new_obj = Object.assign({}, obj)
+    console.log(new_obj);
+
+
+
+    function Person() {
+
+    }
+
+    let obj3 = {}     // new Object
+    console.log(obj3 instanceof Object)
+    let obj4 = new Person()
+    console.log(obj4 instanceof Person)
+</script>
