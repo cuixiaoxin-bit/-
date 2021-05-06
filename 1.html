@@ -70,8 +70,12 @@
 
     //24
     sayHi();
-    var sayHi = function () {
+    var sayHi = function () {   //报错 sayHi不是一个function
         console.log("Hi");
+    }
+
+    function sayHi() {
+        console.log("Hi");      //打印Hi
     }
 
     //29
