@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    const info_a = {
+        [Symbol("name")]:"Ban",
+        [Symbol("age")]:"50",
+        [Symbol("sex")]:"男",
+        [Symbol("address")]:"伊朗"
+    }
+
+    const info_b = {
+        [Symbol("name")]:"Ben",
+        [Symbol("age")]:"54",
+        [Symbol("sex")]:"男",
+        [Symbol("address")]:"沙特阿拉伯"
+    }
+
+    const info_c = {
+        [Symbol("name")]:"Bin",
+        [Symbol("age")]:"46",
+        [Symbol("sex")]:"女",
+        [Symbol("address")]:"阿富汗"
+    }
+
+    let arr = Object.assign(info_a,info_b,info_c)
+    console.log(arr);
+</script>
