@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let obj1 = {
+        name:"san",
+        age:"20"
+    }
+
+    //自定义对象属性 方法1
+    obj1.sex = "男"
+
+    //自定义对象属性 方法2
+    Object.defineProperty(obj1,"sex",{
+        value : "Man",
+        configurable : true,  //属性是否可以被delete删除
+        writable : false,      //属性是否可以被修改
+        enumerable : true,    //属性是否可以被枚举 for in
+    })
+    console.log(obj1);
+
+
+    //属性拦截器
+    Object.defineProperty(obj1,"address",{
+        //读对象的address时 触发get方法
+        get:function(){
+            console.log("触发了get属性");
+        },
+
+        //写对象address时 触发set方法
+        set:function(){
+            console.log("触发了set属性");
+        }
+    })
+
+    obj1.address
+    obj1.address = "Beijing"
+
+    //枚举对象的属性
+    for(k in obj1){
+        console.log(k,obj1[k]);
+    }
+
+
+    //获取对象所有键(属性名)，返回数组
+    let arr = Object.keys(obj1)
+    console.log(arr);
+
+    //获取对象的键值对
+    let v = Object.entries(obj1)
+    console.log(v);
+</script>
