@@ -22,8 +22,8 @@
     let arr = [1,2,3,4,5]
     console.log(Array.prototype);
     //获取内部的迭代器接口
-
     let it = arr[Symbol.iterator]()
+    
     //手动迭代 调用next()
     console.log(it);
     console.log(it.next()); //1
