@@ -12,7 +12,10 @@
     <script>
         window.onload = function(){ 
             document.querySelector("a").addEventListener("click",function(ev){
+                (ev).preventDefault()   //阻止事件默认行为
+                // (ev).stopPropagation()   //阻止事件冒泡
                 alert("WORLD")
+                
             })
         }
     </script>
