@@ -48,12 +48,12 @@
                         <label for="id">
                             编号：
                         </label>
-                        <input type="text" id="id">
+                        <input type="text" id="id" v-model="a">
                         <label for="name">
                             名称：
                         </label>
-                        <input type="text" id="name">
-                        <button>提交</button>
+                        <input type="text" id="name" v-model="b">
+                        <button v-on:click="add">提交</button>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for = "(item,k) in list" :key ="item.id"> 
+                    <tr v-for="(item,k) in list" :key="item.id">
                                             <!--保证key的唯一性-->
                         <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
@@ -75,7 +75,7 @@
                         <td>
                             <a href="">修改</a>
                             <span>|</span>
-                            <a href="" v-on:click.prevent = "del(k)">删除</a>
+                            <a href="" v-on:click.prevent="del(k)">删除</a>
                         </td>
                     </tr>
                 </tbody>
@@ -88,21 +88,40 @@
 
         //实例化
         new Vue({
-            el:"#app",
-            data:{
-                list:[] //数据列表
+            el: "#app",
+            data: {
+                list: [], //数据列表
+                a: "",
+                b: "",
             },
-            methods:{
-                del(i){
-                    this.list.splice(i,1)
+            methods: {
+                del(i) {
+                    this.list.splice(i, 1)
+                },
+                add() {
+                    let obj = {};
+                    obj.id = this.a;
+                    obj.name = this.b;
+
+                    let now = new Date();
+                    let y = now.getFullYear();  //获取年
+                    // console.log(y)
+                    let m = now.getMonth(); //获取月
+                    // console.log(m)
+                    let d = now.getDate() //获取日
+                    // console.log(d)
+                    let ymd = `${y}-${m + 1}-${d}`;
+                    // console.log(ymd)
+                    obj.time = ymd
+                    this.list.push(obj)
                 }
             },
             //在创建阶段请求接口
-            created(){
+            created() {
                 let this_ = this
                 let api_url = "http://vue.api.comcto.com/api/books.php" //接口地址
-                axios.get(api_url).then(function(res){
-                    //获取服务器响应的数据 res.data
+                axios.get(api_url).then(function (res) {
+                    //获取服务器响应的数据 r es.data
                     this_.list = res.data
                 })
             }
