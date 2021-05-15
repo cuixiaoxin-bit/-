@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        用户名1：<input type="text" value="张三"> <br>
+        用户名2：<input type="text" v-model="username"> <br>
+        <button v-on:click = "add">获取用户名</button>
+    </div>
+    <script src="../js/axios.min.js"></script>
+    <script src="../js/vue-2.6.12.min.js"></script>
+    <script>
+        new Vue ({
+            el:"#app",
+            //挂载点
+            data:{
+                username:"",
+            },
+            //数据
+            methods:{
+                add(){
+                    
+                }
+            },
+            //方法
+            created(){
+                let this_ = this
+                let api_url = "http://vue.api.comcto.com/api/books.php" //接口地址
+                axios.get(api_url).then(function (res) {
+                    //获取服务器响应的数据 res.data
+                    this_.list = res.data
+                })
+            }
+            //生命周期 钩子函数
+        })
+    </script>
+</body>
+</html>
