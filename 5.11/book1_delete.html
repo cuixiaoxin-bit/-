@@ -48,7 +48,7 @@
                         <label for="id">
                             编号：
                         </label>
-                        <input type="text" id="id" v-model="a">
+                        <input type="text" id="id" v-model="a" v-bind:disabled="status">
                         <label for="name">
                             名称：
                         </label>
@@ -68,12 +68,12 @@
                 </thead>
                 <tbody>
                     <tr v-for="(item,k) in list" :key="item.id">
-                                            <!--保证key的唯一性-->
+                        <!--保证key的唯一性-->
                         <td>{{item.id}}</td>
                         <td>{{item.name}}</td>
                         <td>{{item.time}}</td>
                         <td>
-                            <a href="">修改</a>
+                            <a href="" v-on:click.prevent="set(k)">修改</a>
                             <span>|</span>
                             <a href="" v-on:click.prevent="del(k)">删除</a>
                         </td>
@@ -90,6 +90,7 @@
         new Vue({
             el: "#app",
             data: {
+                status: false,  //disabled默认为可用状态
                 list: [], //数据列表
                 a: "",
                 b: "",
@@ -99,21 +100,58 @@
                     this.list.splice(i, 1)
                 },
                 add() {
-                    let obj = {};
-                    obj.id = this.a;
-                    obj.name = this.b;
 
-                    let now = new Date();
-                    let y = now.getFullYear();  //获取年
-                    // console.log(y)
-                    let m = now.getMonth(); //获取月
-                    // console.log(m)
-                    let d = now.getDate() //获取日
-                    // console.log(d)
-                    let ymd = `${y}-${m + 1}-${d}`;
-                    // console.log(ymd)
-                    obj.time = ymd
-                    this.list.push(obj)
+                    //判断是修改还是添加？
+                    console.log("status: ", this.status)
+                    if (this.status) {      //修改
+                        let id = this.a
+                        let name = this.b
+                        console.log("要修改的内容：", id, name)
+
+
+                        //遍历 list 找到 id = this.a
+                        this.list.forEach(function (v, k) {
+                            if (v.id === id) {    //找到了要更新的元素
+                                console.log("找到了要更新的数据：", v)
+                                v.name = name
+                            }
+                        })
+
+
+                        //清空 input
+                        this.a = null
+                        this.b = null
+                        this.status = false
+
+                    } else {              //添加
+                        let obj = {};
+                        obj.id = this.a;
+                        obj.name = this.b;
+
+                        let now = new Date();
+                        let y = now.getFullYear();  //获取年
+                        // console.log(y)
+                        let m = now.getMonth(); //获取月
+                        // console.log(m)
+                        let d = now.getDate() //获取日
+                        // console.log(d)
+                        let ymd = `${y}-${m + 1}-${d}`;
+                        // console.log(ymd)
+                        obj.time = ymd
+                        this.list.push(obj)
+                    }
+                    this.a = null
+                    this.b = null
+                },
+                set(i) {
+                    console.log("要修改的数据索引为", i)
+                    console.log("要修改的数据为： ", this.list[i])
+                    //将数据 填充到 input中
+                    this.a = this.list[i].id
+                    this.b = this.list[i].name
+
+                    //禁止修改 a
+                    this.status = true
                 }
             },
             //在创建阶段请求接口
