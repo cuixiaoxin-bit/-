@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>侦听器</title>
+</head>
+<body>
+    <div id="app">
+        姓名：<input type="text" v-model.lazy="name">
+        Email：<input type="text" v-model="Email">
+    </div>
+    <script src="../js/vue-2.6.12.min.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                name:null,
+                Email:null
+            },
+            //计算属性
+            computed:{},
+            watch:{
+                name(v){
+                    console.log('name',v);
+                },
+                Email(k){
+                    console.log("Email",k);
+                }
+            }
+            
+        })
+    </script>  
+</body>
+</html>
