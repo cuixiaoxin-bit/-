@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <user-list v-bind:list="list"></user-list>
+    </div>
+    <script src="../js/vue-2.6.12.min.js"></script>
+    <script src="../js/axios.min.js"></script>
+    <script>
+
+        let UserList = {
+            props:['list'],
+            template:`
+            <ul>
+                <li v-for="item in list":key="item.id">
+                    <span>{{item.goods_id}}</span>
+                    <span>{{item.goods_name}}</span>
+                    <span>{{item.shop_price}}</span>
+                </li>
+            </ul>
+            `
+        }
+
+
+
+        new Vue({
+            el:"#app",
+            data:{
+                list:[
+                    {id:101,name:"瘟疫之源",age:18},
+                    {id:102,name:"法外狂徒",age:25},
+                    {id:103,name:"时间刺客",age:19}
+                ]
+            },
+            components:{
+              'user-list':UserList
+            },
+            created(){
+                let self = this
+                let api = "http://localhost:3002/goods/list"
+                axios.get(api).then(function(res){
+                    console.log(res);
+                    let goods_list = res.data
+                    self.list = goods_list
+                })
+            }
+        })
+    </script>
+</body>
+</html>
