@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg1}}</p>
+        <button v-on:click="btn1">ONE</button>
+        <button v-on:click="btn3">THREE</button>
+        <hello-world></hello-world>
+    </div>
+    <script src="../js/vue-2.6.12.min.js"></script>
+    <script>
+
+
+        //定义一个组价
+        Vue.component("hello-world",{
+            //组件里的data 是一个函数
+            data(){
+                return {
+                    msg2:"hello"
+                }
+            },
+            methods:{
+                btn2(){
+                    console.log(222);
+                },
+                btn4(){
+                    console.log(this.msg2);
+                }
+            },
+
+            //模板
+            template:`<div>
+                <h1> hello Vue</h1>
+                <p>{{msg2}}</p>
+                <button @click="btn2">TWO</button>  
+                <button @click="btn4">FOUR</button>  
+                // 组件里的方法写到组件里
+                </div>`
+        })
+
+
+
+        //根组件
+        new Vue({
+            el:"#app",
+            data:{
+                msg1:'GOOD',
+                msg2:"FINE"
+            },
+            methods:{
+                btn1(){
+                    console.log(111);
+                },
+                // btn2(){
+                //     console.log(222);
+                // }    报错 组件里的方法写到根  会报错
+                btn3(){
+                    console.log(this.msg1);
+                }
+            }
+        })
+    </script>
+</body>
+</html>
