@@ -198,6 +198,7 @@
     data:{
       list:[]
     },
+    //请求接口
     created(){
       let self=this
       let api_url="http://localhost:3002/goods/list"
@@ -206,7 +207,7 @@
         self.list=d.data
       })
     },
-    
+
     components:{
       "cart-head": CartHead,
       "cart-list": CartList,
